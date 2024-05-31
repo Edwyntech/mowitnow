@@ -21,6 +21,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="documentation" options="-parameters" />
+      <module name="domain" options="-parameters" />
       <module name="mowitnow" options="-parameters" />
     </option>
   </component>
