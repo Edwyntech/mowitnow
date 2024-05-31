@@ -1,0 +1,47 @@
+= Mow It Now
+:author:        Edwyn Tech
+:owner:         Edwyntech
+:email:         mailto:contact@edwyn.tech
+:project:       mowitnow
+:key:           {owner}_{project}
+:repo:          https://github.com/{owner}/{project}
+:ci:            {repo}/actions/workflows/ci.yaml
+:linkedin:      https://www.linkedin.com/company/74937487/
+:youtube:       https://www.youtube.com/@EdwynTech
+:twitch:        https://www.twitch.tv/edwyntech
+:badges:        https://img.shields.io/badge
+
+image:{ci}/badge.svg[link={ci},window=_blank]
+
+Implémentation de l'exercice de la tondeuse proposé par Xebia.
+
+TIP: Les instructions de l'exercice sont proposées link:INSTRUCTIONS.md[ici] à part.
+
+== Structure
+
+Ce projet est construit comme un projet Maven multi-module basé sur le JDK 21.
+
+[NOTE]
+====
+Les répertoires qui démarrent par un point contiennent des configurations additionnelles :
+
+* `.github` - configure le CICD
+* `.idea` - configure IntelliJ
+* `.mvn` - configure la toolchain Maven
+====
+
+== Cycle De Vie
+
+|===
+
+|Construction|`mvn package`
+|Documentation|`mvn verify`
+
+|===
+
+== Auteur
+
+image::https://img.shields.io/badge/Par_email-email?style=social&logo=microsoftoutlook&label={author}[link={email}]
+image::{badges}/Sur_LinkedIn-email?style=social&logo=linkedin&label={author}[link={linkedin},window=_blank]
+image::https://img.shields.io/badge/Youtube-channel?style=social&logo=youtube&label={author}[link={youtube},window=_blank]
+image::https://img.shields.io/badge/Twitch-channel?style=social&logo=twitch&label={author}[link={twitch},window=_blank]
