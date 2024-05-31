@@ -1,70 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>io.github.rdlopes</groupId>
-        <artifactId>maven-root-pom</artifactId>
-        <version>1.3.5</version>
-    </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.github.rdlopes</groupId>
+    <artifactId>maven-root-pom</artifactId>
+    <version>1.3.5</version>
+  </parent>
 
-    <groupId>tech.edwyn.mowitnow</groupId>
-    <artifactId>root</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+  <groupId>tech.edwyn.mowitnow</groupId>
+  <artifactId>root</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <url>https://github.com/Edwyntech/mowitnow</url>
+
+  <developers>
+    <developer>
+      <id>edwyntech</id>
+      <name>Edwyn Tech</name>
+      <email>contact@edwyn.tech</email>
+      <url>https://www.edwyn.tech</url>
+      <organization>Edwyn Tech</organization>
+      <organizationUrl>https://www.edwyn.tech</organizationUrl>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <contributors>
+    <contributor>
+      <name>Edwyn Tech</name>
+      <url>https://www.edwyn.tech</url>
+      <organization>Edwyn Tech</organization>
+      <organizationUrl>https://www.edwyn.tech</organizationUrl>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <timezone>2</timezone>
+    </contributor>
+  </contributors>
+
+  <modules>
+    <module>documentation</module>
+  </modules>
+
+  <scm>
+    <connection>scm:git:https://github.com/Edwyntech/mowitnow</connection>
+    <developerConnection>scm:git:https://github.com/Edwyntech/mowitnow</developerConnection>
     <url>https://github.com/Edwyntech/mowitnow</url>
+  </scm>
 
-    <developers>
-        <developer>
-            <id>edwyntech</id>
-            <name>Edwyn Tech</name>
-            <email>contact@edwyn.tech</email>
-            <url>https://www.edwyn.tech</url>
-            <organization>Edwyn Tech</organization>
-            <organizationUrl>https://www.edwyn.tech</organizationUrl>
-            <roles>
-                <role>Developer</role>
-            </roles>
-        </developer>
-    </developers>
+  <issueManagement>
+    <system>Github</system>
+    <url>https://github.com/Edwyntech/mowitnow/issues</url>
+  </issueManagement>
 
-    <contributors>
-        <contributor>
-            <name>Edwyn Tech</name>
-            <url>https://www.edwyn.tech</url>
-            <organization>Edwyn Tech</organization>
-            <organizationUrl>https://www.edwyn.tech</organizationUrl>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>2</timezone>
-        </contributor>
-    </contributors>
-
-    <scm>
-        <connection>scm:git:https://github.com/Edwyntech/mowitnow</connection>
-        <developerConnection>scm:git:https://github.com/Edwyntech/mowitnow</developerConnection>
-        <url>https://github.com/Edwyntech/mowitnow</url>
-    </scm>
-
-    <issueManagement>
-        <system>Github</system>
-        <url>https://github.com/Edwyntech/mowitnow/issues</url>
-    </issueManagement>
-
-    <ciManagement>
-        <system>Github</system>
-        <url>https://github.com/Edwyntech/mowitnow/actions</url>
-        <notifiers>
-            <notifier>
-                <sendOnSuccess>false</sendOnSuccess>
-                <sendOnWarning>false</sendOnWarning>
-                <configuration>
-                    <address>contact@edwyn.tech</address>
-                </configuration>
-            </notifier>
-        </notifiers>
-    </ciManagement>
+  <ciManagement>
+    <system>Github</system>
+    <url>https://github.com/Edwyntech/mowitnow/actions</url>
+    <notifiers>
+      <notifier>
+        <sendOnSuccess>false</sendOnSuccess>
+        <sendOnWarning>false</sendOnWarning>
+        <configuration>
+          <address>contact@edwyn.tech</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
 
 </project>

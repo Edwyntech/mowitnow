@@ -1,10 +1,11 @@
-= Mow It Now
+= {documentation}[Mow It Now]
 :author:        Edwyn Tech
 :owner:         Edwyntech
 :email:         mailto:contact@edwyn.tech
 :project:       mowitnow
 :key:           {owner}_{project}
 :repo:          https://github.com/{owner}/{project}
+:documentation: https://{owner}.github.io/{project}
 :ci:            {repo}/actions/workflows/ci.yaml
 :linkedin:      https://www.linkedin.com/company/74937487/
 :youtube:       https://www.youtube.com/@EdwynTech

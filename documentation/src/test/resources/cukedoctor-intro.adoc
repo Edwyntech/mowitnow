@@ -1,0 +1,13 @@
+= *Présentation*
+
+Bienvenue dans la documentation fonctionnelle de l'application de pilotage des tondeuses automatiques MowItNow.
+
+On y retrouvera :
+
+- La description d'une programmation
+- Les contrôles de validation opérés
+- La description de l'exécution d'une programmation
+
+Le logiciel de l'application est disponible depuis son <<github-repo,dépôt>> en accès libre.
+
+Cette documentation est également consultable <<github-doc,en ligne>>.
