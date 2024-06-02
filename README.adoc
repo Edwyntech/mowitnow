@@ -7,12 +7,14 @@
 :repo:          https://github.com/{owner}/{project}
 :documentation: https://{owner}.github.io/{project}
 :ci:            {repo}/actions/workflows/ci.yaml
+:cd:            {repo}/actions/workflows/cd.yaml
 :linkedin:      https://www.linkedin.com/company/74937487/
 :youtube:       https://www.youtube.com/@EdwynTech
 :twitch:        https://www.twitch.tv/edwyntech
 :badges:        https://img.shields.io/badge
 
 image:{ci}/badge.svg[link={ci},window=_blank]
+image:{cd}/badge.svg[link={cd},window=_blank]
 
 Implémentation de l'exercice de la tondeuse proposé par Xebia.
 
@@ -21,6 +23,12 @@ TIP: Les instructions de l'exercice sont proposées link:INSTRUCTIONS.md[ici] à
 == Structure
 
 Ce projet est construit comme un projet Maven multi-module basé sur le JDK 21.
+
+Parmi ces modules :
+
+* `domain` - Les fonctions de l'application.
+* `documentation` - la documentation vivante du projet.
+* `ui-desktop` - l'application bureau (JavaFX).
 
 [NOTE]
 ====
@@ -35,9 +43,9 @@ Les répertoires qui démarrent par un point contiennent des configurations addi
 
 |===
 
-|Construction|`mvn package`
-|Documentation|`mvn verify`
-
+|Construction|`mvnw package`
+|Documentation|`mvnw verify`
+|Lancement|`mvnw javafx:run`
 |===
 
 == Auteur
