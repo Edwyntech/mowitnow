@@ -40,7 +40,7 @@ jobs:
 
       - name: Install Application Packages
         run: |
-          mvn package
+          mvn package install
           bash .github/scripts/create-installer-${{ matrix.os }}.sh
 
       - name: Upload artifact
