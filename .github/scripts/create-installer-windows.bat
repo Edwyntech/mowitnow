@@ -35,7 +35,7 @@ copy %TARGET_DIRECTORY%\%MAIN_JAR% %TARGET_DIRECTORY%\libs\
   --class-path "%TARGET_DIRECTORY%\libs\*" ^
   --print-module-deps %MAIN_CLASS_PATH% > dependencies.txt
 
-set /p detected_modules=<dependencies.txt
+set /p detected_modules=< dependencies.txt
 set manual_modules=,jdk.crypto.ec,jdk.localedata
 
 call "%JAVA_HOME%\bin\jlink" ^
