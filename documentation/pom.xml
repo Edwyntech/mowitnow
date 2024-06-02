@@ -65,14 +65,20 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-failsafe-plugin</artifactId>
+        <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <testFailureIgnore>true</testFailureIgnore>
+          <includes>
+            <include>**/*Features.java</include>
+          </includes>
         </configuration>
       </plugin>
       <plugin>
         <groupId>com.github.cukedoctor</groupId>
         <artifactId>cukedoctor-maven-plugin</artifactId>
+        <configuration>
+          <documentTitle>Documentation</documentTitle>
+          <introChapterDir>${project.build.testOutputDirectory}</introChapterDir>
+        </configuration>
       </plugin>
     </plugins>
   </build>

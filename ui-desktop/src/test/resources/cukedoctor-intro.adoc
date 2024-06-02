@@ -1,0 +1,7 @@
+= *Bienvenue*
+
+Vous retrouverez la documentation de l'application de pilotage des tondeuses automatiques MowItNow.
+
+- Les divers concepts et notations utilisées
+- La description des commandes acceptées par les tondeuses
+- Le mode d'emploi de la programmation de la tondeuse
