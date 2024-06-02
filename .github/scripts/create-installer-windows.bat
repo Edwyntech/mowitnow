@@ -13,7 +13,7 @@ FOR /F "tokens=*" %%g IN ('mvn -f ui-desktop\pom.xml validate help:evaluate "-De
 FOR /F "tokens=*" %%g IN ('mvn -f ui-desktop\pom.xml validate help:evaluate "-Dexpression=project.build.finalName" -q -DforceStdout') do (SET MAIN_JAR=%%g.jar)
 FOR /F "tokens=*" %%g IN ('mvn -f ui-desktop\pom.xml validate help:evaluate "-Dexpression=main.class" -q -DforceStdout') do (SET MAIN_CLASS=%%g)
 FOR /F "tokens=*" %%g IN ('mvn -f ui-desktop\pom.xml validate help:evaluate "-Dexpression=main.classpath" -q -DforceStdout') do (SET MAIN_CLASSPATH=%%g)
-SET APPLICATION_ICON="%ROOT_DIR%\.github\assets\icons\windows\mowitnow.ico"
+SET APPLICATION_ICON=%ROOT_DIR%\.github\assets\icons\windows\mowitnow.ico
 
 echo ROOT_DIR: %ROOT_DIR%
 echo TARGET_DIRECTORY: %TARGET_DIRECTORY%
@@ -28,26 +28,31 @@ IF EXIST %ROOT_DIR%\target\java-runtime rmdir /S /Q  %ROOT_DIR%\target\java-runt
 IF EXIST %ROOT_DIR%\target\installer rmdir /S /Q %ROOT_DIR%\target\installer
 copy %TARGET_DIRECTORY%\%MAIN_JAR% %TARGET_DIRECTORY%\libs\
 
-"%JAVA_HOME%\bin\jdeps" ^
-  -q ^
+echo Computing Dependencies
+"%JAVA_HOME%\bin\jdeps" -q ^
   --multi-release %JAVA_VERSION% ^
   --ignore-missing-deps ^
   --class-path "%TARGET_DIRECTORY%\libs\*" ^
   --print-module-deps %MAIN_CLASS_PATH% > dependencies.txt
 
-set /p detected_modules=< dependencies.txt
-set manual_modules=,jdk.crypto.ec,jdk.localedata
+set /p detected_modules=<dependencies.txt
+set manual_modules=jdk.crypto.ec,jdk.localedata
 
+echo detected_modules: %detected_modules%
+echo manual_modules: %manual_modules%
+
+echo Linking Binary
 call "%JAVA_HOME%\bin\jlink" ^
   --strip-native-commands ^
   --no-header-files ^
   --no-man-pages ^
   --compress=2 ^
   --strip-debug ^
-  --add-modules %detected_modules%%manual_modules% ^
+  --add-modules %detected_modules%,%manual_modules% ^
   --include-locales=en,fr ^
   --output target/java-runtime
 
+echo Packaging Installer
 call "%JAVA_HOME%\bin\jpackage" ^
   --type msi ^
   --dest target/installer ^
@@ -66,3 +71,5 @@ call "%JAVA_HOME%\bin\jpackage" ^
   --win-shortcut ^
   --win-per-user-install ^
   --win-menu
+
+echo A MSI installer is available at %ROOT_DIR%\target\installer

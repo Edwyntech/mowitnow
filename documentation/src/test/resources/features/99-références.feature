@@ -6,7 +6,7 @@ Fonctionnalité: Références
 
   [bibliography]
 
-  * [[[github-repo]]] Dépot du projet, link:https://github.com/rdlopes/mowitnow[GitHub Repository^]
-  * [[[github-doc]]] Documentation du projet, link:https://rdlopes.github.io/mowitnow[GitHub Pages^]
+  * [[[github-repo]]] Dépot du projet, link:https://github.com/Edwyntech/mowitnow[GitHub Repository^]
+  * [[[github-doc]]] Documentation du projet, link:https://Edwyntech.github.io/mowitnow[GitHub Pages^]
 
   Scénario: Root
