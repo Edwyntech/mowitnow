@@ -39,9 +39,20 @@ jobs:
           cache: 'maven'
 
       - name: Install Application Packages
-        run: |
-          mvn package install
-          bash .github/scripts/create-installer-${{ matrix.os }}.sh
+        run: mvn package install
+
+      - name: Create Ubuntu installer
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        shell: bash
+        run: bash .github/scripts/create-installer-linux.sh
+      - name: Create Mac OSX installer
+        if: ${{ matrix.os == 'macos-latest' }}
+        shell: bash
+        run: bash .github/scripts/create-installer-macosx.sh
+      - name: Create Windows installer
+        if: ${{ matrix.os == 'windows-latest' }}
+        shell: cmd
+        run: .github/scripts/create-installer-windows.bat
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
