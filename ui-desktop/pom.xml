@@ -11,6 +11,7 @@
 
   <properties>
     <main.class>tech.edwyn.mowitnow.desktop.DesktopApplication</main.class>
+    <main.classpath>${project.build.outputDirectory}/tech/edwyn/mowitnow/desktop/DesktopApplication.class</main.classpath>
   </properties>
 
   <dependencies>

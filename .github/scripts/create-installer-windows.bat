@@ -12,6 +12,7 @@ FOR /F "tokens=*" %%g IN ('mvn -f ui-desktop\pom.xml validate help:evaluate "-De
 FOR /F "tokens=*" %%g IN ('mvn -f ui-desktop\pom.xml validate help:evaluate "-Dexpression=project.version" -q -DforceStdout') do (SET PROJECT_VERSION=%%g)
 FOR /F "tokens=*" %%g IN ('mvn -f ui-desktop\pom.xml validate help:evaluate "-Dexpression=project.build.finalName" -q -DforceStdout') do (SET MAIN_JAR=%%g.jar)
 FOR /F "tokens=*" %%g IN ('mvn -f ui-desktop\pom.xml validate help:evaluate "-Dexpression=main.class" -q -DforceStdout') do (SET MAIN_CLASS=%%g)
+FOR /F "tokens=*" %%g IN ('mvn -f ui-desktop\pom.xml validate help:evaluate "-Dexpression=main.classpath" -q -DforceStdout') do (SET MAIN_CLASSPATH=%%g)
 SET APPLICATION_ICON="%ROOT_DIR%\.github\assets\icons\windows\mowitnow.ico"
 
 echo ROOT_DIR: %ROOT_DIR%
@@ -25,8 +26,6 @@ echo APPLICATION_ICON: %APPLICATION_ICON%
 
 IF EXIST %ROOT_DIR%\target\java-runtime rmdir /S /Q  %ROOT_DIR%\target\java-runtime
 IF EXIST %ROOT_DIR%\target\installer rmdir /S /Q %ROOT_DIR%\target\installer
-
-xcopy /S /Q target\libs\* target\installer\input\libs\
 copy %TARGET_DIRECTORY%\%MAIN_JAR% %TARGET_DIRECTORY%\libs\
 
 "%JAVA_HOME%\bin\jdeps" ^

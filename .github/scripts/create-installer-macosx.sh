@@ -16,7 +16,7 @@ TARGET_DIRECTORY=$(mvn_evaluate project.build.directory)
 PROJECT_VERSION=$(mvn_evaluate project.version)
 MAIN_JAR="$(mvn_evaluate project.build.finalName).jar"
 MAIN_CLASS=$(mvn_evaluate main.class)
-MAIN_CLASSPATH="$(mvn_evaluate project.build.outputDirectory)/$(echo "${MAIN_CLASS}" | sed -r 's/\./\//g').class"
+MAIN_CLASSPATH=$(mvn_evaluate main.classpath)
 APPLICATION_ICON="${ROOT_DIR}/.github/assets/icons/macosx/mowitnow.icns"
 
 echo "ROOT_DIR: ${ROOT_DIR}"
