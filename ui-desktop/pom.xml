@@ -133,6 +133,14 @@
           <introChapterDir>${project.build.testOutputDirectory}</introChapterDir>
           <hideSummarySection>true</hideSummarySection>
         </configuration>
+        <executions>
+          <execution>
+            <id>living-documentation</id>
+            <configuration>
+              <format>all</format>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
