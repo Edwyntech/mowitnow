@@ -19,7 +19,7 @@ TARGET_DIRECTORY=$(mvn_evaluate project.build.directory)
 PROJECT_VERSION=$(mvn_evaluate project.version)
 MAIN_JAR="$(mvn_evaluate project.build.finalName).jar"
 MAIN_CLASS=$(mvn_evaluate main.class)
-MAIN_CLASSPATH=$(mvn_evaluate main.classpath)
+MAIN_CLASSPATH="$(mvn_evaluate project.build.outputDirectory)/$(echo "${MAIN_CLASS}" | sed -r 's/\./\//g').class"
 
 echo "ROOT_DIR: ${ROOT_DIR}"
 echo "TARGET_DIRECTORY: ${TARGET_DIRECTORY}"
@@ -51,39 +51,61 @@ function create_runtime() {
 }
 
 function create_installer() {
-  # options are platform dependent
-  declare -a platform_parameter
   if [ "${RUNNER}" = 'ubuntu-latest' ]; then
-    platform_parameter+=("--type app-image")
-    platform_parameter+=("--icon .github/assets/icons/mowitnow.png")
+    "${JAVA_HOME}"/bin/jpackage \
+      --type app-image \
+      --dest "$2" \
+      --input "${TARGET_DIRECTORY}/libs" \
+      --name MowItNow \
+      --main-class "${MAIN_CLASS}" \
+      --main-jar "${MAIN_JAR}" \
+      --arguments -Dprism.maxvram=2G \
+      --java-options -Xmx2048m \
+      --runtime-image "$1" \
+      --icon "${ROOT_DIR}/.github/assets/icons/mowitnow.png" \
+      --app-version "${PROJECT_VERSION%-SNAPSHOT}" \
+      --vendor "Edwyn Tech" \
+      --copyright "Copyright © 2024 Edwyn Tech" \
+      --about-url "https://github.com/Edwyntech/mowitnow"
   elif [ "${RUNNER}" = 'macos-latest' ]; then
-    platform_parameter+=("--type dmg")
-    platform_parameter+=("--icon .github/assets/icons/mowitnow.icns")
-    platform_parameter+=("--mac-package-identifier tech.edwyn.mowitnow")
-    platform_parameter+=("--mac-package-name EdwynTech")
+    "${JAVA_HOME}"/bin/jpackage \
+      --type dmg \
+      --dest "$2" \
+      --input "${TARGET_DIRECTORY}/libs" \
+      --name MowItNow \
+      --main-class "${MAIN_CLASS}" \
+      --main-jar "${MAIN_JAR}" \
+      --arguments -Dprism.maxvram=2G \
+      --java-options -Xmx2048m \
+      --runtime-image "$1" \
+      --icon "${ROOT_DIR}/.github/assets/icons/mowitnow.icns" \
+      --app-version "${PROJECT_VERSION%-SNAPSHOT}" \
+      --vendor "Edwyn Tech" \
+      --copyright "Copyright © 2024 Edwyn Tech" \
+      --about-url "https://github.com/Edwyntech/mowitnow" \
+      --mac-package-identifier tech.edwyn.mowitnow \
+      --mac-package-name EdwynTech
   elif [ "${RUNNER}" = 'windows-latest' ]; then
-    platform_parameter+=("--type msi")
-    platform_parameter+=("--icon .github\assets\icons\mowitnow.ico")
-    platform_parameter+=("--win-dir-chooser")
-    platform_parameter+=("--win-shortcut")
-    platform_parameter+=("--win-per-user-install")
-    platform_parameter+=("--win-menu")
+    "${JAVA_HOME}"/bin/jpackage \
+      --type msi \
+      --dest "$2" \
+      --input "${TARGET_DIRECTORY}/libs" \
+      --name MowItNow \
+      --main-class "${MAIN_CLASS}" \
+      --main-jar "${MAIN_JAR}" \
+      --arguments -Dprism.maxvram=2G \
+      --java-options -Xmx2048m \
+      --runtime-image "$1" \
+      --icon "${ROOT_DIR}\.github\assets\icons\mowitnow.ico" \
+      --app-version "${PROJECT_VERSION%-SNAPSHOT}" \
+      --vendor "Edwyn Tech" \
+      --copyright "Copyright © 2024 Edwyn Tech" \
+      --about-url "https://github.com/Edwyntech/mowitnow" \
+      --win-dir-chooser \
+      --win-shortcut \
+      --win-per-user-install \
+      --win-menu
   fi
-
-  "${JAVA_HOME}"/bin/jpackage \
-  --dest "$2" \
-  --input "${TARGET_DIRECTORY}/libs" \
-  --name MowItNow \
-  --main-class "${MAIN_CLASS}" \
-  --main-jar "${MAIN_JAR}" \
-  --arguments -Dprism.maxvram=2G \
-  --java-options -Xmx2048m \
-  --runtime-image "$1" \
-  --app-version "${PROJECT_VERSION%-SNAPSHOT}" \
-  --vendor "Edwyn Tech" \
-  --copyright "Copyright © 2024 Edwyn Tech" \
-  --about-url "https://github.com/Edwyntech/mowitnow" \
-  "${platform_parameter[@]}"
 }
 
 rm -rfd "${ROOT_DIR}/target/java-runtime"
