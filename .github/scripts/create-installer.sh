@@ -66,7 +66,6 @@ function create_installer() {
   fi
 
   "${JAVA_HOME}"/bin/jpackage \
-  --type app-image \
   --dest "$2" \
   --input "${TARGET_DIRECTORY}/libs" \
   --name MowItNow \
