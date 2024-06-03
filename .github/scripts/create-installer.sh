@@ -4,8 +4,10 @@
 # RUNNER - The runner this script is running on (ubuntu-latest, windows-latest, macos-latest)
 # JAVA_VERSION - Java version in maven format (17,21,...)
 # JAVA_HOME - JDK home
+echo "RUNNER: ${RUNNER}"
 echo "JAVA_VERSION: ${JAVA_VERSION}"
 echo "JAVA_HOME: ${JAVA_HOME}"
+echo "Running from ${PWD}"
 
 function mvn_evaluate() {
     result=$(mvn -f ui-desktop/pom.xml validate help:evaluate -Dexpression="$1" -q -DforceStdout)
@@ -52,13 +54,16 @@ function create_installer() {
   # options are platform dependent
   declare -a platform_parameter
   if [ "${RUNNER}" = 'ubuntu-latest' ]; then
-    platform_parameter+=("--icon ${ROOT_DIR}/.github/assets/icons/mowitnow.png")
+    platform_parameter+=("--type app-image")
+    platform_parameter+=("--icon .github/assets/icons/mowitnow.png")
   elif [ "${RUNNER}" = 'macos-latest' ]; then
-    platform_parameter+=("--icon ${ROOT_DIR}/.github/assets/icons/mowitnow.icns")
+    platform_parameter+=("--type dmg")
+    platform_parameter+=("--icon .github/assets/icons/mowitnow.icns")
     platform_parameter+=("--mac-package-identifier tech.edwyn.mowitnow")
     platform_parameter+=("--mac-package-name EdwynTech")
-  elif [ "${RUNNER}" = 'macos-latest' ]; then
-    platform_parameter+=("--icon ${ROOT_DIR}/.github/assets/icons/mowitnow.ico")
+  elif [ "${RUNNER}" = 'windows-latest' ]; then
+    platform_parameter+=("--type msi")
+    platform_parameter+=("--icon .github\assets\icons\mowitnow.ico")
     platform_parameter+=("--win-dir-chooser")
     platform_parameter+=("--win-shortcut")
     platform_parameter+=("--win-per-user-install")
@@ -77,6 +82,7 @@ function create_installer() {
   --app-version "${PROJECT_VERSION%-SNAPSHOT}" \
   --vendor "Edwyn Tech" \
   --copyright "Copyright © 2024 Edwyn Tech" \
+  --about-url "https://github.com/Edwyntech/mowitnow" \
   "${platform_parameter[@]}"
 }
 
