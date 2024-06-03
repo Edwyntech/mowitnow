@@ -41,18 +41,11 @@ jobs:
       - name: Install Application Packages
         run: ./mvnw package install
 
-      - name: Create Ubuntu installer
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+      - name: Create Installer
         shell: bash
-        run: bash .github/scripts/create-installer-linux.sh
-      - name: Create Mac OSX installer
-        if: ${{ matrix.os == 'macos-latest' }}
-        shell: bash
-        run: bash .github/scripts/create-installer-macosx.sh
-      - name: Create Windows installer
-        if: ${{ matrix.os == 'windows-latest' }}
-        shell: bash
-        run: .github/scripts/create-installer-windows.sh
+        run: bash .github/scripts/create-installer.sh
+        env:
+          RUNNER: ${{ matrix.os }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
