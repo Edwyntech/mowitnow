@@ -56,6 +56,7 @@ function create_installer() {
       --type app-image \
       --dest "$2" \
       --input "${TARGET_DIRECTORY}/libs" \
+      --app-content "${TARGET_DIRECTORY}/cukedoctor/index.pdf"\
       --name MowItNow \
       --main-class "${MAIN_CLASS}" \
       --main-jar "${MAIN_JAR}" \
@@ -65,13 +66,13 @@ function create_installer() {
       --icon "${ROOT_DIR}/.github/assets/icons/mowitnow.png" \
       --app-version "${PROJECT_VERSION%-SNAPSHOT}" \
       --vendor "Edwyn Tech" \
-      --copyright "Copyright © 2024 Edwyn Tech" \
-      --about-url "https://github.com/Edwyntech/mowitnow"
+      --copyright "Copyright © 2024 Edwyn Tech"
   elif [ "${RUNNER}" = 'macos-latest' ]; then
     "${JAVA_HOME}"/bin/jpackage \
       --type dmg \
       --dest "$2" \
       --input "${TARGET_DIRECTORY}/libs" \
+      --app-content "${TARGET_DIRECTORY}/cukedoctor/index.pdf"\
       --name MowItNow \
       --main-class "${MAIN_CLASS}" \
       --main-jar "${MAIN_JAR}" \
@@ -90,6 +91,7 @@ function create_installer() {
       --type msi \
       --dest "$2" \
       --input "${TARGET_DIRECTORY}/libs" \
+      --app-content "${TARGET_DIRECTORY}\cukedoctor\index.pdf"\
       --name MowItNow \
       --main-class "${MAIN_CLASS}" \
       --main-jar "${MAIN_JAR}" \
