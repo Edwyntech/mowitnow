@@ -91,6 +91,9 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <configuration>
           <mainClass>${main.class}</mainClass>
+          <commandlineArgs>--user-guide=${project.build.directory}/cukedoctor/Guide_Utilisateur.pdf
+            --mower-latency-ms=500
+          </commandlineArgs>
         </configuration>
       </plugin>
       <plugin>

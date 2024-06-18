@@ -43,9 +43,9 @@ Les répertoires qui démarrent par un point contiennent des configurations addi
 
 |===
 
-|Construction|`mvnw package`
-|Documentation|`mvnw verify`
-|Lancement|`mvnw javafx:run`
+|Construction|./mvnw install
+|Documentation|./mvnw verify
+|Lancement|./mvnw -f ui-desktop javafx:run
 |===
 
 == Auteur

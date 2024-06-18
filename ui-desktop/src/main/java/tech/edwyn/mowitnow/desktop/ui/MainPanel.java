@@ -137,16 +137,19 @@ public class MainPanel extends VBox implements Initializable {
     log.trace("onDocumentationAction - event:{}", event);
     
     if (userGuidePath != null) {
+      log.debug("onDocumentationAction - using userGuidePath:{}", userGuidePath);
       desktopService.showDocument(Paths.get(userGuidePath)
                                        .toUri()
                                        .toString());
     } else try (var is = getClass().getClassLoader()
                                    .getResourceAsStream(PDF_USER_GUIDE_JAR_PATH)) {
+      log.debug("onDocumentationAction - using JAR path:{}", PDF_USER_GUIDE_JAR_PATH);
       if (is != null) {
         var tempFile = Files.createTempFile("guide", ".pdf");
         Files.copy(is, tempFile, REPLACE_EXISTING);
         userGuidePath = tempFile.toAbsolutePath()
                                 .toString();
+        log.debug("onDocumentationAction - extracted userGuidePath:{}", userGuidePath);
         desktopService.showDocument(tempFile.toUri()
                                             .toString());
       }
