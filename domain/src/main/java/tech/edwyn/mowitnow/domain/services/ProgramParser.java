@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tech.edwyn.mowitnow.domain.entities.*;
 
+import java.time.Duration;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,10 +12,15 @@ import java.util.regex.Pattern;
 import static java.util.stream.Collectors.toCollection;
 
 public class ProgramParser {
-  private static final Logger  log                  = LoggerFactory.getLogger(ProgramParser.class);
-  public static final  Pattern INSTRUCTIONS_PATTERN = Pattern.compile("[DGA]+");
-  public static final  Pattern POSITION_PATTERN     = Pattern.compile("(\\d+ \\d+) ([NEWS])");
-  public static final  Pattern COORDINATES_PATTERN  = Pattern.compile("(\\d+) (\\d+)");
+  private static final Logger   log                  = LoggerFactory.getLogger(ProgramParser.class);
+  public static final  Pattern  INSTRUCTIONS_PATTERN = Pattern.compile("[DGA]+");
+  public static final  Pattern  POSITION_PATTERN     = Pattern.compile("(\\d+ \\d+) ([NEWS])");
+  public static final  Pattern  COORDINATES_PATTERN  = Pattern.compile("(\\d+) (\\d+)");
+  private final        Duration mowerLatency;
+  
+  public ProgramParser(Duration mowerLatency) {
+    this.mowerLatency = mowerLatency;
+  }
   
   public Program parse(String programInput) throws ParsingException {
     log.trace("parse - programInput:{}", programInput);
@@ -48,7 +54,7 @@ public class ProgramParser {
         lineCounter++;
         
         Queue<Command> instructions = parseInstructions(lineCounter, instructionsString);
-        Mower          mower        = new Mower(position, instructions);
+        Mower mower = new Mower(position, instructions, mowerLatency);
         
         mowers.add(mower);
       }

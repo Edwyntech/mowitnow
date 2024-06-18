@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-  <import class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"/>
-  <import class="ch.qos.logback.core.ConsoleAppender"/>
-
-  <appender name="STDOUT" class="ConsoleAppender">
-    <encoder class="PatternLayoutEncoder">
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%kvp- %msg%n</pattern>
     </encoder>
+  </appender>
+
+  <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="STDOUT"/>
   </appender>
 
   <logger name="tech.edwyn.mowitnow.desktop" level="DEBUG"/>
   <logger name="tech.edwyn.mowitnow.domain" level="INFO"/>
 
   <root level="WARN">
-    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="ASYNC"/>
   </root>
-
 </configuration>

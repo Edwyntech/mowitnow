@@ -1,10 +1,13 @@
 package tech.edwyn.mowitnow.desktop.features;
 
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.platform.suite.api.*;
 import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.context.annotation.Bean;
+import tech.edwyn.mowitnow.desktop.features.config.ScenarioUI;
+import tech.edwyn.mowitnow.desktop.services.FakeDesktopService;
 
 import static io.cucumber.junit.platform.engine.Constants.*;
-import static io.cucumber.junit.platform.engine.Constants.JUNIT_PLATFORM_NAMING_STRATEGY_PROPERTY_NAME;
 
 @Suite
 @IncludeEngines("cucumber")
@@ -16,5 +19,21 @@ import static io.cucumber.junit.platform.engine.Constants.JUNIT_PLATFORM_NAMING_
   @ConfigurationParameter(key = JUNIT_PLATFORM_NAMING_STRATEGY_PROPERTY_NAME, value = "long")
 })
 @SpringBootConfiguration
-public class DesktopDesktopApplicationUserGuide {
+public class DesktopApplicationUserGuide {
+  
+  @Bean
+  public ObjectMapper objectMapper() {
+    return new ObjectMapper();
+  }
+  
+  @Bean
+  public FakeDesktopService desktopService() {
+    return new FakeDesktopService();
+  }
+  
+  @Bean
+  public ScenarioUI ui(FakeDesktopService desktopService) {
+    return new ScenarioUI(desktopService);
+  }
+  
 }

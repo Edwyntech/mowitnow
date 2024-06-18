@@ -10,7 +10,7 @@
   <artifactId>ui-desktop</artifactId>
 
   <properties>
-    <main.class>tech.edwyn.mowitnow.desktop.DesktopApplication</main.class>
+    <main.class>tech.edwyn.mowitnow.desktop.Main</main.class>
   </properties>
 
   <dependencies>
@@ -21,20 +21,13 @@
 
     <dependency>
       <groupId>org.openjfx</groupId>
-      <artifactId>javafx-fxml</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
-      <artifactId>javafx-swing</artifactId>
+      <artifactId>javafx-fxml</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-web</artifactId>
-    </dependency>
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -47,22 +40,27 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-spring</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit-platform-engine</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-suite</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.testfx</groupId>
@@ -77,6 +75,11 @@
     <dependency>
       <groupId>org.testfx</groupId>
       <artifactId>testfx-junit5</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-swing</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -113,6 +116,24 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <compilerArgs>
+            <arg>--add-exports</arg>
+            <arg>javafx.graphics/com.sun.javafx.application=ALL-UNNAMED</arg>
+            <arg>--add-exports</arg>
+            <arg>javafx.graphics/com.sun.glass.ui=ALL-UNNAMED</arg>
+            <arg>--add-exports</arg>
+            <arg>javafx.graphics/com.sun.javafx.util=ALL-UNNAMED</arg>
+            <arg>--add-exports</arg>
+            <arg>javafx.base/com.sun.javafx.logging=ALL-UNNAMED</arg>
+            <arg>--add-exports</arg>
+            <arg>javafx.controls/com.sun.javafx.scene.control=mowitnow.ui.desktop</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <executions>
           <execution>
@@ -121,6 +142,19 @@
               <includes>
                 <include>**/*UserGuide.java</include>
               </includes>
+              <argLine>-XX:+EnableDynamicAgentLoading
+                --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                --add-exports javafx.graphics/com.sun.glass.ui=ALL-UNNAMED
+                --add-exports javafx.graphics/com.sun.javafx.util=ALL-UNNAMED
+                --add-exports javafx.base/com.sun.javafx.logging=ALL-UNNAMED
+                --add-exports javafx.controls/com.sun.javafx.scene.control=mowitnow.ui.desktop
+                --add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                --add-opens javafx.graphics/com.sun.glass.ui=ALL-UNNAMED
+                -Djava.awt.headless=true
+                -Dtestfx.headless=true
+                -Dtestfx.robot=glass
+                -Dprism.order=sw
+              </argLine>
             </configuration>
           </execution>
         </executions>
@@ -139,6 +173,29 @@
               <outputFileName>Guide_Utilisateur</outputFileName>
               <hideSummarySection>true</hideSummarySection>
               <format>all</format>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>add-user-guide-to-jar</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>post-integration-test</phase>
+            <configuration>
+              <executable>jar</executable>
+              <arguments>
+                <argument>uvf</argument>
+                <argument>${project.build.directory}/${project.build.finalName}.jar</argument>
+                <argument>-C</argument>
+                <argument>${project.build.directory}/cukedoctor</argument>
+                <argument>Guide_Utilisateur.pdf</argument>
+              </arguments>
             </configuration>
           </execution>
         </executions>

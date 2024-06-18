@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<fx:root type="Pane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="lawn-cell" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <StackPane>
+         <children>
+            <ImageView fx:id="grassView" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="mowerView" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </StackPane>
+   </children>
+</fx:root>

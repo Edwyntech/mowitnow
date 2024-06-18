@@ -1,0 +1,24 @@
+.root {
+  -fx-accent: lightgrey;
+}
+
+.program-text-area {
+  -fx-font-family: "Hack Nerd Font Mono";
+  -fx-font-size: 16px;
+  -fx-focus-color: -fx-accent, -fx-accent;
+  -fx-faint-focus-color: transparent;
+}
+
+.error-messages-label {
+  -fx-font-family: "Arial Black";
+  -fx-font-size: 14px;
+  -fx-text-fill: #F18100;
+}
+
+.lawn-grid {
+  -fx-background-color: green;
+}
+
+.lawn-cell {
+  -fx-background-color: green;
+}

@@ -19,7 +19,7 @@ public class ExecuteProgram {
     log.trace("applicationRunsMowingProgram");
     
     var program = compileProgram.getProgram();
-    output = program.execute();
+    output = program.call();
   }
   
   public Output getOutput() {

@@ -1,7 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Desktop" type="Application" factoryName="Application">
+  <configuration default="false" name="DesktopApplication" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="tech.edwyn.mowitnow.desktop.DesktopApplication" />
     <module name="ui-desktop" />
+    <option name="PROGRAM_PARAMETERS" value="--user-guide=ui-desktop/target/cukedoctor/Guide_Utilisateur.pdf --mower-latency-ms=500" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="tech.edwyn.mowitnow.desktop.*" />

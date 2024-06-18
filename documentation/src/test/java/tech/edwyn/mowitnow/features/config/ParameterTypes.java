@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import tech.edwyn.mowitnow.domain.entities.*;
 
 import java.lang.reflect.Type;
+import java.time.Duration;
 import java.util.*;
 
 import static java.util.function.Predicate.not;
@@ -16,6 +17,9 @@ public class ParameterTypes {
   
   @Autowired
   private ObjectMapper objectMapper;
+  
+  @Autowired
+  private Duration mowerLatency;
   
   @DefaultParameterTransformer
   @DefaultDataTableEntryTransformer
@@ -58,7 +62,7 @@ public class ParameterTypes {
   public Mower mower(Map<String, String> entries) {
     var position     = position(entries.get("Position"));
     var instructions = instructions(entries.get("Instructions"));
-    return new Mower(position, instructions);
+    return new Mower(position, instructions, mowerLatency);
   }
   
   @DataTableType

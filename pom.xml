@@ -73,9 +73,10 @@
 
   <properties>
     <!-- Dependencies -->
+    <controlsfx.version>11.0.0</controlsfx.version>
     <openjfx.version>21.0.3</openjfx.version>
-    <testfx.version>4.0.18</testfx.version>
     <openjfx-monocle.version>21.0.2</openjfx-monocle.version>
+    <testfx.version>4.0.18</testfx.version>
     <!-- Plugin -->
     <javafx-maven-plugin.version>0.0.8</javafx-maven-plugin.version>
   </properties>
@@ -89,17 +90,12 @@
       </dependency>
       <dependency>
         <groupId>org.openjfx</groupId>
-        <artifactId>javafx-fxml</artifactId>
-        <version>${openjfx.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.openjfx</groupId>
         <artifactId>javafx-controls</artifactId>
         <version>${openjfx.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openjfx</groupId>
-        <artifactId>javafx-web</artifactId>
+        <artifactId>javafx-fxml</artifactId>
         <version>${openjfx.version}</version>
       </dependency>
       <dependency>

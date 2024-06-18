@@ -16,8 +16,16 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
         </processorPath>
         <module name="ui-desktop" />
-        <module name="documentation" />
         <module name="domain" />
+      </profile>
+      <profile name="Annotation profile for documentation" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
+        </processorPath>
+        <module name="documentation" />
       </profile>
     </annotationProcessing>
   </component>
@@ -27,7 +35,7 @@
       <module name="domain" options="-parameters" />
       <module name="mowitnow" options="-parameters" />
       <module name="root" options="-parameters" />
-      <module name="ui-desktop" options="-parameters" />
+      <module name="ui-desktop" options="-parameters --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED --add-exports javafx.graphics/com.sun.glass.ui=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.util=ALL-UNNAMED --add-exports javafx.base/com.sun.javafx.logging=ALL-UNNAMED --add-exports javafx.controls/com.sun.javafx.scene.control=mowitnow.ui.desktop" />
     </option>
   </component>
 </project>

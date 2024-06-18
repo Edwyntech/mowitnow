@@ -1,0 +1,19 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Desktop User Guide" type="JUnit" factoryName="JUnit">
+    <module name="ui-desktop" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="tech.edwyn.mowitnow.desktop.features.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="PACKAGE_NAME" value="tech.edwyn.mowitnow.desktop.features" />
+    <option name="MAIN_CLASS_NAME" value="tech.edwyn.mowitnow.desktop.features.DesktopApplicationUserGuide" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
+    <option name="VM_PARAMETERS" value="-ea -XX:+EnableDynamicAgentLoading --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED --add-exports javafx.graphics/com.sun.glass.ui=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.util=ALL-UNNAMED --add-exports javafx.base/com.sun.javafx.logging=ALL-UNNAMED --add-exports javafx.controls/com.sun.javafx.scene.control=mowitnow.ui.desktop --add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED --add-opens javafx.graphics/com.sun.glass.ui=ALL-UNNAMED -Djava.awt.headless=true -Dtestfx.headless=true -Dtestfx.robot=glass -Dprism.order=sw" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -45,7 +45,7 @@ jobs:
         shell: bash
         run: bash .github/scripts/create-installer.sh
         env:
-          RUNNER: ${{ matrix.os }}
+          OS: ${{ matrix.os }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

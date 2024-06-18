@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+
+<fx:root fx:id="simulationPanel" type="BorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" HBox.hgrow="ALWAYS">
+   <center>
+      <GridPane fx:id="lawnGridPanel" styleClass="lawn-grid" visible="false" BorderPane.alignment="CENTER" />
+   </center>
+</fx:root>

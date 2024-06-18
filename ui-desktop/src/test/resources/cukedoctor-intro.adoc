@@ -1,7 +1,19 @@
 = *Bienvenue*
 
-Vous retrouverez la documentation de l'application de pilotage des tondeuses automatiques MowItNow.
+Nous partageons ici le guide d'utilisation de l'application de pilotage des tondeuses MotItNow.
 
-- Les divers concepts et notations utilisées
-- La description des commandes acceptées par les tondeuses
-- Le mode d'emploi de la programmation de la tondeuse
+Cette application vous permet l'édition, la validation et la simulation d'une programmation de vos tondeuses.
+
+== Installation
+
+Un installateur pour votre OS est disponible sur le <<github-repo,site de l'application>>.
+
+|===
+
+|OS|Format
+
+|Windows|MSI
+|Mac OSX|DMG
+|Linux|App Package
+|===
+
