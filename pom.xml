@@ -74,7 +74,7 @@
   <properties>
     <!-- Dependencies -->
     <controlsfx.version>11.0.0</controlsfx.version>
-    <openjfx.version>21.0.3</openjfx.version>
+    <openjfx.version>22.0.1</openjfx.version>
     <openjfx-monocle.version>21.0.2</openjfx-monocle.version>
     <testfx.version>4.0.18</testfx.version>
     <!-- Plugin -->
